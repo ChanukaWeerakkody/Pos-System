@@ -86,7 +86,7 @@
         </section>
         <br>
         <div>
-            <button type="button" class="btn btn-primary mx-5" id="btnSave">Add Customer</button>
+            <button type="button" class="btn btn-primary mx-5" id="btnCus">Add Customer</button>
         </div>
 
         <section>
@@ -102,6 +102,9 @@
                                 <th>Salary</th>
                             </tr>
                             </thead>
+                            <tbody id="customerTable">
+
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -375,15 +378,24 @@
         });
 
         // add Customer
-        $("#btnSave").click(function (){
+        $("#btnCus").click(function (){
             // gather customer information
-            $("txtCusId").val();
-            $("txtCusName").val();
-            $("txtCusAddress").val();
-            $("txtCusSalary").val();
+            let cusId = $("#txtCusId").val();
+            let cusName = $("#txtCusName").val();
+            let cusAddress = $("#txtCusAddress").val();
+            let cusSalary = $("#txtCusSalary").val();
 
+            console.log(cusId,cusName,cusAddress,cusSalary);
+            console.log(typeof cusId,typeof cusName,typeof cusAddress,typeof cusSalary);
+
+            let row =`<tr> <th>${cusId}</th> <th>${cusName}</th> <th>${cusAddress}</th> <th>${cusSalary}</th> </tr>`;
+
+            $("#customerTable").append(row);
+
+            console.log(row);
 
         });
+
 
     </script>
 
