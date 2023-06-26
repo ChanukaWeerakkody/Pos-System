@@ -3,6 +3,7 @@
 /*  Focused customerID input field When Firstly open that page..*/
 $('#txtCusId').focus();
 
+// add validation
 const cusIdRegEx = /^(C00-)[0-9]{1,3}$/;
 const cusNameRegEx = /^[A-z ]{5,20}$/;
 const cusAddressRegEx = /^[0-9/A-z. ,]{7,}$/;
@@ -34,17 +35,18 @@ customerValidationArray.push({
 });
 
 
-/** Text Fields Key down to Tab & prevent Default function.. */
-$("#txtCusId,#txtCusName,#txtCusAddress,#txtCusSalary").on('keydown', function (event) {
-    if (event.key == "Tab") {
-        event.preventDefault();
-    }
-});
+
+
+// /** Text Fields Key down to Tab & prevent Default function.. */
+// $("#txtCusId,#txtCusName,#txtCusAddress,#txtCusSalary").on('keydown', function (event) {
+//     if (event.key == "Tab") {
+//         event.preventDefault();
+//     }
+// });
 
 /** Text Fields Key Up to Check validation function.. */
 $("#txtCusId,#txtCusName,#txtCusAddress,#txtCusSalary").on('keyup', function (event) {
     checkCustomerValidation();
-
 });
 
 /** Text Fields blur to Check validation function.. */
@@ -153,24 +155,22 @@ function setButtonState(count) {
     }
 }
 
-/** ================================================================================================================ */
-
+/****************************** A L L   B U T T O N  O P E R A T I O N S ***************************/
 
 /** Save  Customer Click Event Function */
 $('#btnCustomerSave').click(function () {//local scope // function scope
     saveCustomer();
-
 });
 
 
-/** Get All Customer Click Event Function */
-$('#btnGetAllCustomer').click(function () {
-    loadAllCustomers();
-    setData_Bind_Row_Events();
-    clearTextFields();
-});
+// /** Get All Customer Click Event Function */
+// $('#btnGetAllCustomer').click(function () {
+//     loadAllCustomers();
+//     setData_Bind_Row_Events();
+//     clearTextFields();
+// });
 
-/** Search Customer txtCustomer id input field Key Down Function */
+/** Search Customer txtCustomer id input field Function */
 $('#txtCusId').keydown(function (event) {
     if (event.key == "Enter") {
 
@@ -218,8 +218,6 @@ $('#btnUpdateCustomer').click(function () {
     } else {
         alert("Update Failed..! Something went wrong..");
     }
-
-
 });
 
 
@@ -253,8 +251,6 @@ function saveCustomer() {
     let customerAddress = $('#txtCusAddress').val();
     let customerSalary = $('#txtCusSalary').val();
 
-
-
     /**  put all of these values inside a named container  */
     var customer = new customerModel(customerID,customerName,customerAddress,customerSalary);
 
@@ -265,6 +261,7 @@ function saveCustomer() {
     loadAllCustomers();
 
     clearTextFields();
+
     // Calling setData_Bind_Row_Events function after the customer added...
     setData_Bind_Row_Events();
 
